@@ -60,7 +60,6 @@ public class AdvanceRequestServiceImpl implements AdvanceRequestService {
             advanceRequest.setStatus(AdvanceStatus.DRAFT);
         }
         AdvanceRequest saved = advanceRequestRepository.save(advanceRequest);
-
         if (r.getIsForSubmitting().equals(Boolean.TRUE)) {
             approvalLogService.createApprovalLog(
                     AdvanceApprovalLogDto.builder()
@@ -72,7 +71,6 @@ public class AdvanceRequestServiceImpl implements AdvanceRequestService {
         }
         return advanceRequestMapper.toDto(saved);
     }
-
     @Override
     @Transactional
     public AdvanceRequestDto updateAdvanceRequest(AdvanceRequestDto advanceRequestDto) {
@@ -84,16 +82,12 @@ public class AdvanceRequestServiceImpl implements AdvanceRequestService {
         if (!existingRequest.getStatus().equals(AdvanceStatus.DRAFT)) {
             throw new RuntimeException("Only draft approval request can be updated");
         }
-
         existingRequest.setQuotation(advanceRequestDto.getQuotation());
         existingRequest.setSection(advanceRequestDto.getSection());
         existingRequest.setFiscalYear(advanceRequestDto.getFiscalYear());
 
         existingRequest.getDetails().clear();
         BigDecimal totalAmount = BigDecimal.ZERO;
-
-        List<AdvanceRequestDetail> details = new ArrayList<>();
-
 
         for (AdvanceRequestDetailDto detailDto : advanceRequestDto.getDetailDto()) {
             ExpenseCategoryDto expenseCategory = detailDto.getExpenseCategory();
@@ -104,7 +98,7 @@ public class AdvanceRequestServiceImpl implements AdvanceRequestService {
                     .amount(detailAmount)
                     .advanceRequest(existingRequest)
                     .build();
-            details.add(detail);
+            existingRequest.getDetails().add(detail);
             totalAmount = totalAmount.add(detailAmount);
         }
         existingRequest.setAmount(totalAmount);
@@ -114,10 +108,7 @@ public class AdvanceRequestServiceImpl implements AdvanceRequestService {
         } else {
             existingRequest.setStatus(AdvanceStatus.DRAFT);
         }
-
-        existingRequest.setDetails(details);
         AdvanceRequest savedRequest = advanceRequestRepository.save(existingRequest);
-
         if (advanceRequestDto.getIsForSubmitting().equals(Boolean.TRUE)) {
             approvalLogService.createApprovalLog(
                     AdvanceApprovalLogDto.builder()
@@ -128,9 +119,7 @@ public class AdvanceRequestServiceImpl implements AdvanceRequestService {
             );
         }
         return advanceRequestMapper.toDto(savedRequest);
-
     }
-
     @Override
     @Transactional
     public AdvanceRequestDto findAdvanceRequestById(Long id) {
@@ -145,7 +134,6 @@ public class AdvanceRequestServiceImpl implements AdvanceRequestService {
                 .orElseThrow(() -> new RuntimeException("Advance Request not found with id:" + id));
         advanceRequestRepository.delete(advanceRequest);
     }
-
     private BigDecimal calculateTotalAmount(ExpenseCategoryDto category) {
         if (category.getChildren() == null || category.getChildren().isEmpty()) {
             return category.getAmount();

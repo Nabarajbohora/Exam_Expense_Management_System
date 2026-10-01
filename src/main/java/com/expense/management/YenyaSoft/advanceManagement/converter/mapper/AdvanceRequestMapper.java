@@ -16,7 +16,6 @@ public class AdvanceRequestMapper {
         if (entity == null) {
             return null;
         }
-
         return AdvanceRequestDto.builder()
                 .id(entity.getId())
                 .quotation(entity.getQuotation())
@@ -28,24 +27,20 @@ public class AdvanceRequestMapper {
                 .status(entity.getStatus())
                 .build();
     }
-
     private AdvanceRequestDetailDto toDetailDto(AdvanceRequestDetail entity) {
 
         if (entity == null) {
             return null;
         }
-
         return AdvanceRequestDetailDto.builder()
                 .expenseCategory(entity.getExpenseCategory())
                 .build();
     }
-
     private List<AdvanceRequestDetailDto> toDetailDto(List<AdvanceRequestDetail> entities) {
 
         if (entities == null || entities.isEmpty()) {
             return new ArrayList<>();
         }
-
         return entities.stream()
                 .map(this::toDetailDto)
                 .toList();

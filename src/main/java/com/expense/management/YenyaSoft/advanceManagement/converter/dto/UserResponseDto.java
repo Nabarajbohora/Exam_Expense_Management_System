@@ -1,6 +1,6 @@
 package com.expense.management.YenyaSoft.advanceManagement.converter.dto;
 
-import jakarta.validation.Valid;
+import com.expense.management.YenyaSoft.advanceManagement.converter.enums.UserRole;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,9 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AdvanceRequestDetailDto {
-    @Valid
-    @NotNull
-    private ExpenseCategoryDto expenseCategory;
-    
+public class UserResponseDto {
+    private Long id;
+    private String username;
+    private String email;
+    private String section;
+    private UserRole role;
 }

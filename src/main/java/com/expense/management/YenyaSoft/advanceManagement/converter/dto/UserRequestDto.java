@@ -1,6 +1,6 @@
 package com.expense.management.YenyaSoft.advanceManagement.converter.dto;
 
-import com.expense.management.YenyaSoft.advanceManagement.converter.enums.UserRole;
+import com.expense.management.YenyaSoft.advanceManagement.converter.enums.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -29,5 +29,5 @@ public class UserRequestDto {
     private String section;
 
     @NotNull(message = "role is required ")
-    private UserRole role;
+    private Role role;
 }

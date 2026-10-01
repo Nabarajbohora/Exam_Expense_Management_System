@@ -1,7 +1,6 @@
 package com.expense.management.YenyaSoft.advanceManagement.converter.dto;
 
-import com.expense.management.YenyaSoft.advanceManagement.converter.enums.UserRole;
-import jakarta.validation.constraints.NotNull;
+import com.expense.management.YenyaSoft.advanceManagement.converter.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,5 +15,5 @@ public class UserResponseDto {
     private String username;
     private String email;
     private String section;
-    private UserRole role;
+    private Role role;
 }

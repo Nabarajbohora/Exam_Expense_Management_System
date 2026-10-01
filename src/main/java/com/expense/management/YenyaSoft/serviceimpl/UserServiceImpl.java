@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public UserResponseDto register(UserRequestDto requestDto) {
+    public UserResponseDto createUser(UserRequestDto requestDto) {
         if (userRepo.existsByUsername(requestDto.getUsername())) {
             throw new RuntimeException("Username name is already exist");
         }
@@ -43,7 +43,6 @@ public class UserServiceImpl implements UserService {
                 .role(savedUser.getRole())
                 .build();
     }
-
     @Override
     public UserResponseDto login(UserRequestDto requestDto) {
         return null;

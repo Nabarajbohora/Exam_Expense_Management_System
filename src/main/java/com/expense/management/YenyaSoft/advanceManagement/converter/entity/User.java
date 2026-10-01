@@ -1,10 +1,10 @@
 package com.expense.management.YenyaSoft.advanceManagement.converter.entity;
 
-import ch.qos.logback.core.model.processor.AllowAllModelFilter;
-import com.expense.management.YenyaSoft.advanceManagement.converter.enums.UserRole;
+import com.expense.management.YenyaSoft.advanceManagement.converter.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,5 +33,5 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
-    private UserRole role;
+    private Role role;
 }

@@ -101,7 +101,6 @@ public class AdvanceRequestServiceImpl implements AdvanceRequestService {
             totalAmount = totalAmount.add(detailAmount);
         }
         existingRequest.setAmount(totalAmount);
-
         if (advanceRequestDto.getIsForSubmitting().equals(Boolean.TRUE)) {
             existingRequest.setStatus(AdvanceStatus.UNDER_REVIEW);
         } else {

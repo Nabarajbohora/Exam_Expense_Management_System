@@ -53,7 +53,6 @@ public class AdvanceRequestServiceImpl implements AdvanceRequestService {
         }
         advanceRequest.setAmount(totalAmount);
         advanceRequest.setDetails(details);
-
         if (r.getIsForSubmitting().equals(Boolean.TRUE)) {
             advanceRequest.setStatus(AdvanceStatus.UNDER_REVIEW);
         } else {

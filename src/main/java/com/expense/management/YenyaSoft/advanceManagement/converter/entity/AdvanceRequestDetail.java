@@ -16,7 +16,6 @@ import java.math.BigDecimal;
 @Builder
 @Table(name = "advance_request_detail")
 public class AdvanceRequestDetail {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

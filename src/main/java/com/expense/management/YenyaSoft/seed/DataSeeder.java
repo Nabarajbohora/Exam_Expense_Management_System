@@ -13,14 +13,13 @@ import org.springframework.stereotype.Component;
 public class DataSeeder implements CommandLineRunner {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-
     @Override
-    public void run(String... args) {
-        if (!userRepository.existsByEmail("accountuser@yopmail.com")) {
+    public void run(String...args) {
+        if (!userRepository.existsByEmail("xettrynabraj377@gmail.com")) {
             userRepository.save(
                     User.builder()
-                            .username("accountuser")
-                            .email("accountuser@yopmail.com")
+                            .username("account")
+                            .email("xettrynabraj377@gmail.com")
                             .password(passwordEncoder.encode("Account@123"))
                             .section("ACCOUNT_SECTION")
                             .role(Role.ACCOUNT_USER)

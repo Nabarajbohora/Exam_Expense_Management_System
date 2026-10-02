@@ -25,13 +25,11 @@ public class AdvanceRequestController {
         AdvanceRequestDto updated = advanceRequestService.updateAdvanceRequest(advanceRequestDto);
         return new ResponseEntity<>(updated, HttpStatus.OK);
     }
-
     @GetMapping("/{id}")
     public ResponseEntity<AdvanceRequestDto> findAdvanceRequestById(@PathVariable Long id) {
         AdvanceRequestDto requestDto = advanceRequestService.findAdvanceRequestById(id);
         return new ResponseEntity<>(requestDto, HttpStatus.OK);
     }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAdvanceRequest(@PathVariable Long id) {
         advanceRequestService.deleteAdvanceRequest(id);

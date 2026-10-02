@@ -6,5 +6,4 @@ import com.expense.management.YenyaSoft.advanceManagement.converter.dto.UserResp
 public interface UserService {
     UserResponseDto createUser(UserRequestDto requestDto);
 
-    UserResponseDto login(UserRequestDto requestDto);
 }

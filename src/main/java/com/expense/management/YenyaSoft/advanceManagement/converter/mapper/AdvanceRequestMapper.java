@@ -28,7 +28,6 @@ public class AdvanceRequestMapper {
                 .build();
     }
     private AdvanceRequestDetailDto toDetailDto(AdvanceRequestDetail entity) {
-
         if (entity == null) {
             return null;
         }

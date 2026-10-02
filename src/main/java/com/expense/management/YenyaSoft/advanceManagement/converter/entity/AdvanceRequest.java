@@ -61,7 +61,6 @@ public class AdvanceRequest {
         createdAt = now;
         updatedAt = now;
     }
-
     @PreUpdate
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();

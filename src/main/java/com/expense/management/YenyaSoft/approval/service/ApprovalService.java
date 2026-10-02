@@ -1,5 +1,6 @@
 package com.expense.management.YenyaSoft.approval.service;
 
+import com.expense.management.YenyaSoft.approval.dto.AdvanceApprovalLogDto;
 import com.expense.management.YenyaSoft.approval.dto.ApprovalDto;
 import com.expense.management.YenyaSoft.approval.entity.AdvanceApprovalLog;
 import com.expense.management.YenyaSoft.advanceManagement.converter.entity.AdvanceRequest;
@@ -7,6 +8,8 @@ import com.expense.management.YenyaSoft.advanceManagement.converter.repository.A
 import com.expense.management.YenyaSoft.approval.repo.AdvanceApprovalLogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -25,9 +28,10 @@ public class ApprovalService {
                 .status(approvalDto.getStatus())
                 .advanceRequest(request)
                 .build();
-
         logRepository.save(approvalLog);
         return approvalDto;
     }
+
+
 }
 

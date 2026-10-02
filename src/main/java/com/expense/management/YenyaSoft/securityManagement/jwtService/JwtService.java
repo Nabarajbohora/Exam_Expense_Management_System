@@ -32,7 +32,6 @@ public class JwtService {
                 .map(auth -> auth.getAuthority()).toList());
         return generateToken(extraClaims, userDetails);
     }
-
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
         return Jwts.builder()
                 .claims(extraClaims)
@@ -46,7 +45,6 @@ public class JwtService {
         final String email = extractUsername(token);
         return (email.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
-
     private boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }

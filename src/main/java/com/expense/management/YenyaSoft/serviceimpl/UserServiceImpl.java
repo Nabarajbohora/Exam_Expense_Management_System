@@ -32,7 +32,6 @@ public class UserServiceImpl implements UserService {
         user.setSection(requestDto.getSection());
         user.setRole(requestDto.getRole());
 
-
         User savedUser = userRepo.save(user);
 
         return UserResponseDto.builder()
@@ -42,9 +41,5 @@ public class UserServiceImpl implements UserService {
                 .section(savedUser.getSection())
                 .role(savedUser.getRole())
                 .build();
-    }
-    @Override
-    public UserResponseDto login(UserRequestDto requestDto) {
-        return null;
     }
 }
